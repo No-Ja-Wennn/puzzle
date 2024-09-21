@@ -13,3 +13,7 @@ def send(request):
 
 def index(request):
      return HttpResponse("<h1>app iss runing</h1>")
+
+[1, 2, 3],
+[4, 5, 6],
+[7, 8, 0]
