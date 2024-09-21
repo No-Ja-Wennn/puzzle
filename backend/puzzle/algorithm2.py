@@ -1,4 +1,4 @@
-from state import State
+from .state import State
 # kiem tra xem co thuoc mang hay khong
 def checkInPrio(Open, tmp):
   if tmp == None:
@@ -12,11 +12,14 @@ def Equal(O, G):
   return O == G
 
 # kiem tra xem co bang Null hay khong
-def Path(O):
+def Path(O, result):
   if O.par != None:
-    Path(O.par)
+    if O != None:
+      result.append(O.data)
+    Path(O.par, result)
     # print(O.op.i)
-  O.Print()
+  # print(O.data)
+  return result
 
 # ham danh gia A*
 def Hx(S, G):
