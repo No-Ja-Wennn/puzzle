@@ -1,4 +1,4 @@
-from .state import State
+from state import State
 class Operator:
   def __init__(self, i):
     self.i = i

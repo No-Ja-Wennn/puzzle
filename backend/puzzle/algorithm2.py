@@ -1,4 +1,4 @@
-from .state import State
+from state import State
 # kiem tra xem co thuoc mang hay khong
 def checkInPrio(Open, tmp):
   if tmp == None:

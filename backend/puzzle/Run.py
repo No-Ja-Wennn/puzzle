@@ -1,8 +1,8 @@
-from .algorithm2 import *
-from .operator2 import Operator
+from algorithm2 import *
+from operator2 import Operator
 from queue import PriorityQueue
 from random import randint
-from .state import State
+from state import State
 
 def RUN(S, G):
   Open = PriorityQueue()
@@ -19,7 +19,11 @@ def RUN(S, G):
       return
     O = Open.get()
     Close.put(O)
-    if Equal(O, G):
+    # print(O.data)
+    # print(G.data)
+    # print("=================================")
+    
+    if Equal(O.data, G.data):
       print ('cac buoc giai:')
       resultData = Path(O, [])
       print(resultData)
@@ -46,9 +50,14 @@ G = State()
 sz = 3
 G.data = [1, 2, 3, 4, 5 , 6, 7, 8, 0]
 S = G.clone()
+# for i in range(20):
+#   op = Operator(randint(0, 3))
+#   tmp = op.Move(S)
+#   if tmp != None:
+#     S = tmp
+G.data = [1, 2, 3, 4, 8, 5, 7, 6, 0] # ok
+# G.data = [1, 2, 3, 4, 8, 5, 6, 7, 0] # not ok
+
+print(S.data)
+print(G.data)
 RUN(S,G)
-for i in range(20):
-  op = Operator(randint(0, 3))
-  tmp = op.Move(S)
-  if tmp != None:
-    S = tmp
