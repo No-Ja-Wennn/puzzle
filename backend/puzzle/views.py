@@ -5,8 +5,7 @@ from django.http import JsonResponse, HttpResponse
 
 def send(request):
     data = {
-        'name': "Hoang Anh Tu",
-        'age': 18
+        "ten" : "hoang anh tus"
     }
     return JsonResponse(data)
 
@@ -14,6 +13,6 @@ def send(request):
 def index(request):
      return HttpResponse("<h1>app iss runing</h1>")
 
-[1, 2, 3],
-[4, 5, 6],
-[7, 8, 0]
+# [1, 2, 3],
+# [4, 5, 6],
+# [7, 8, 0]
