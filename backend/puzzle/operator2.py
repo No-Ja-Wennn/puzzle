@@ -1,4 +1,4 @@
-from state import State
+from .state import State
 class Operator:
   def __init__(self, i):
     self.i = i
@@ -8,7 +8,7 @@ class Operator:
     return s.data == None
   # het def checkStateNull
 
-  # ham findPos tim ra vi tri Null
+  # ham findPos tim ra vi tri Nul
   def findPos(self, s):
     sz = 3
     for i in range(sz):
