@@ -1,14 +1,16 @@
 from django.shortcuts import render
 import copy
+import json
+from django.http import HttpResponse, JsonResponse
 # Create your views here.
 
-start = [[2, 8, 3],
-         [1, 6, 4],
-         [7,"", 5]]
+# start = [[2, 8, 3],
+#          [1, 6, 4],
+#          [7,"", 5]]
 
-goal =  [[1, 2, 3],
-         [8, "", 4],
-         [7, 6, 5]]
+# goal =  [[1, 2, 3],
+#          [8, "", 4],
+#          [7, 6, 5]]
 
 def seach(start):
     for i in range(len(start)):
@@ -65,7 +67,7 @@ def All_case(u, row, col):
         arr.append(tmp)
     return arr
 
-def h(v):
+def h(v, goal):
     count = 0
     for row in range(len(v)):
         for col in range(len(v)):
@@ -76,11 +78,7 @@ def h(v):
 def remove_by_h(way):
     g_temp = 0
     temp_array = []
-    print("remove")
     for index in range(len(way)):
-        print(index)
-        print(way[index]['g'])
-        print()
         if g_temp == way[index]['g']:
             temp_array.append(way[index])
             g_temp += 1
@@ -89,7 +87,7 @@ def remove_by_h(way):
     return temp_array
                   
 
-def A_sao(start, goal):
+def A_function(start, goal):
     g = 0
     L = [{
         "f":0,
@@ -121,16 +119,29 @@ def A_sao(start, goal):
             
             if v not in visited:
                 visited.append(v)
-                f_val = g + h(v)
-                L.append({"g":g, "h":h(v), "f":f_val, "values":v})
+                f_val = g + h(v, goal)
+                L.append({"g":g, "h":h(v, goal), "f":f_val, "values":v})
 
         L = sorted(L, key=lambda x: x["f"])
-def print_puzzle(puzzle):
-    for row in puzzle:
-        print(row)
 
-def main():
-    way = A_sao(start, goal)
-    print("way: ")
-    print_puzzle(way)
-main()
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt  # Nếu đây là API, dùng csrf_exempt để tránh lỗi CSRF
+def index(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)['data']  # Đọc dữ liệu từ request body
+            start = data["start"]
+            goal = data["goal"]
+            print(start)
+            print(goal)
+            # Giả sử A_function xử lý dữ liệu và trả về kết quả
+            result = A_function(start, goal)
+            
+            # Trả về kết quả dưới dạng JSON response
+            return JsonResponse({'result': result}, status=200)
+        
+        except KeyError:
+            return JsonResponse({'error': 'Invalid data format'}, status=400)
+    
+    return JsonResponse({'error': 'Invalid request method'}, status=405)
