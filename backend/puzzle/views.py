@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from . import Run
+from Run import RUN
+from state import State
 # Create your views here.
 from django.http import JsonResponse, HttpResponse
 import json
@@ -35,12 +36,12 @@ def postFunction(request):
             data = [1, 5, 3, 4, 2, 6, 7, 8, 0]
 
             
-            G = Run.State() # nghe bạn đi
+            G = State() # nghe bạn đi
             S = G.clone()
             S.data = data
             G.data = [1, 2, 3, 4, 5 , 6, 7, 8, 0]
-            Run.RUN(S, G)
-
+            RUN(S, G)
+            print(RUN(S, G))
             result = {"data": 'Run.RUN(S, G)'}
             return JsonResponse(result)
 
