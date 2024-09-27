@@ -16,10 +16,6 @@ def seach(start):
             if start[i][j] == "":
                 return (i, j)
 
-# vitri = seach(start)
-
-# print(vitri)
-
 def top(u, row, col):
     if row <= 0:
         return None
@@ -77,12 +73,21 @@ def h(v):
                 count += 1
     return count  
 
-def find_by_h(way, u):
+def remove_by_h(way):
+    g_temp = 0
+    temp_array = []
+    print("remove")
     for index in range(len(way)):
-        if way[index]['g'] == u['g']:
-            return index
-    return None
-              
+        print(index)
+        print(way[index]['g'])
+        print()
+        if g_temp == way[index]['g']:
+            temp_array.append(way[index])
+            g_temp += 1
+        
+        
+    return temp_array
+                  
 
 def A_sao(start, goal):
     g = 0
@@ -101,64 +106,30 @@ def A_sao(start, goal):
         # if 
         if len(L) == 0:
             print("that bai!")
-            return
+            return []
         u = L.pop(0)
 
-        index = find_by_h(way, u)
-        # if index == None:
         way.append(u)
-        # else:
-        #     print("uuu: ", u)
-        #     way[index] = u
-
-        print("g:", u["g"])
-        print(u)
+        
         if u["values"] == goal:
             print("thanh cong")
+            way = remove_by_h(way)
             return way
         row, col = seach(u["values"])
-        print("index")
-        print(row, col)
-        print("v: ")
-        print_puzzle(visited)
-        print()
-        # return
-        # L = []
         g = u["g"] + 1
         for v in All_case(u["values"], row, col):
             
             if v not in visited:
-                # print("v: ",v)
                 visited.append(v)
                 f_val = g + h(v)
                 L.append({"g":g, "h":h(v), "f":f_val, "values":v})
 
         L = sorted(L, key=lambda x: x["f"])
-        print("l:")
-        print_puzzle(L)
-        print("============================================")
-
-# G = top(start, 2, 1)
-# G = buttom(start, 2, 1)
-# G = left(start, 2, 1)
-# G = right(start, 2, 1)
-
 def print_puzzle(puzzle):
     for row in puzzle:
         print(row)
 
-
-# arr = All_case(start)
-# print("Trạng thái ban đầu của bảng:")
-# print(G)
-# print(start)
-
 def main():
-
-    # row, col = seach(start)
-    # arr = All_case(start, row, col)
-    # print ("ket qua cua toi la: ")
-    # print(arr)
     way = A_sao(start, goal)
     print("way: ")
     print_puzzle(way)
