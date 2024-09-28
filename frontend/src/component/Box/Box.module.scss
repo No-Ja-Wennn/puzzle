@@ -1,4 +1,18 @@
-
-.text{
-    color: red;
+:root{
+    --width: calc(( 100% / 3 ) - 0px );
+}
+*{
+    box-sizing: border-box;
+}
+.wrapper{
+    width: var(--width);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    border: 1px solid #000;
+    // max-width: 256px;
+    // max-height: 256px;
+    width: 100%;
+    height: var(--width);
 }
