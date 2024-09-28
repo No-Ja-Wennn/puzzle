@@ -3,16 +3,18 @@
 }
 
 .puzzle{
-    display: flex;
+    display:flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     // width: 100%;
     // height: var(--current-width);
-    margin: 0 auto;
-    max-width: 768px;
-    max-height: 768px;
-    background-color: yellow;
-    width: min(100vw, 100vh);
-    height: min(100vw, 100vh);
+    // margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    flex-shrink: 0; // ngăn khoog cho thẻ con bị thu nhỏ
+    // background-color: yellow;
+    // width: min(100vw, 100vh);
+    // height: min(100vw, 100vh);
+    margin-right: 20px;
 }

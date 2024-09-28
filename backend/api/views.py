@@ -82,10 +82,13 @@ def remove_by_h(way):
         if g_temp == way[index]['g']:
             temp_array.append(way[index])
             g_temp += 1
-        
-        
     return temp_array
-                  
+           
+def only_array(way):
+    arr = []
+    for value in way:
+        arr.append(value["values"]) 
+    return arr      
 
 def A_function(start, goal):
     g = 0
@@ -112,6 +115,7 @@ def A_function(start, goal):
         if u["values"] == goal:
             print("thanh cong")
             way = remove_by_h(way)
+            way = only_array(way)
             return way
         row, col = seach(u["values"])
         g = u["g"] + 1
