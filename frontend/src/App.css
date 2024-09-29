@@ -8,10 +8,20 @@
   margin: 0 auto;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.pacifico-regular {
+  font-family: "Pacifico", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 h1{
   color: #7A6BFF;
   font-size: 60px;
   margin: 80px 0 0 0;
+  font-family: Pacifico;
 }
 
 .show{
