@@ -1,27 +1,65 @@
 :root {
   --width: calc((100% / 3) - 0px);
 }
-// * {
-//   box-sizing: border-box;
-// }
+* {
+  box-sizing: border-box;
+}
 .wrapper {
   width: var(--width);
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-color: green;
-  // border: 1px solid #000;
-  // max-width: 256px;
-  // max-height: 256px;
-  width: var(--width);
+  width: calc(100% / 3);
   height: calc(100% / 3);
-  // width: 100px;
-  // height: 100px;
-  // background-color: #F3F2FF;
-  border-top: 1px solid #7A6BFF21;
-  border-right: 1px solid #7A6BFF21;
-  margin-top: -1px;
-  margin-right: -1px;
+  border: 1px solid #ffffff12;
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.wrapper:nth-child(2n+1):nth-of-type(1){
+  // background-color: gold;
+  border-radius: 20px 0 0 0;
+  border-right: unset;
+  border-bottom: unset;
+}
+.wrapper:nth-child(2n+1):nth-of-type(3){
+  border-radius: 0 20px 0 0;
+  // background-color: black;
+  border-left: unset;
+  border-bottom: unset;
+}
+// .wrapper:nth-child(2n+1):nth-of-type(5){
+//   background-color: green;
+// }
+.wrapper:nth-child(2n+1):nth-of-type(7){
+  border-radius: 0 0 0 20px;
+  // background-color: gray;
+  border-top: unset;
+  border-right: unset;
+}
+.wrapper:nth-child(2n+1):nth-of-type(9){
+  border-radius: 0 0 20px 0;
+  // background-color: purple;
+  border-top: unset;
+  border-left: unset;
+}
+
+
+.wrapper:nth-child(2n):nth-of-type(2){
+  // background-color: blue;
+  border-bottom: unset;
+}
+.wrapper:nth-child(2n):nth-of-type(4){
+  // background-color: aquamarine;
+  border-right: unset;
+}
+.wrapper:nth-child(2n):nth-of-type(6){
+  // background-color: darkcyan;
+  border-left: unset;
+}
+.wrapper:nth-child(2n):nth-of-type(8){
+  // background-color: violet;
+  border-top: unset;
 }
 
 .wrapper:hover{
@@ -40,13 +78,13 @@
   border: none;
   outline: none;
   text-align: center;
-  color: #7A6BFF;
+  color: #fff;
   font-weight: 800;
   // text-shadow: 1px 1px 1px #333;
   font-family: Pacifico;
 }
 .text {
-  color: #7A6BFF;
+  color: #fff;
   font-weight: 800;
   // text-shadow: 1px 1px 1px 1px #333;
 

@@ -57,8 +57,8 @@ function App() {
   return (
     <div className="App">
       <h1>Puzzle</h1>
-      <div className="show">
-        <div className="box1">
+      <div className="main">
+        <div class="wrapper">
           <Wrapper
             boxIndex={1}
             value={valueStart}
@@ -79,14 +79,6 @@ function App() {
               />
             ))
           }
-          <div className="wrapper">
-            <button className="btn" onClick={handleSubmit}>
-              Submit
-            </button>
-          </div>
-        </div>
-        <div className="box2">
-
           <Wrapper
             boxIndex={2}
             value={valueEnd}
@@ -94,11 +86,27 @@ function App() {
             activeWrapper={activeWrapper}
             setActiveWrapper={() => setActiveWrapper(2)}
           />
-          <div className="wrapper">
-            <button className="btn" onClick={handleReset}>
-              Reset
-            </button>
-          </div>
+        </div>
+        {/* <div className="box1">
+        </div>
+        <div className="box2">
+        </div> */}
+      </div>
+      <div className="footer">
+        <div className="wrapper">
+          <button className="btn" onClick={handleSubmit}>
+            Start
+          </button>
+        </div>
+        <div className="wrapper">
+          <button className="btn" onClick={handleReset}>
+            Modify
+          </button>
+        </div>
+        <div className="wrapper">
+          <button className="btn">
+            Reset
+          </button>
         </div>
       </div>
     </div>
