@@ -52,46 +52,54 @@ function App() {
         console.error("Error:", error);
       });
   };
-  const handleReset = () => {setReponse([])};
+  const handleReset = () => { setReponse([]) };
 
   return (
     <div className="App">
+      <h1>Puzzle</h1>
       <div className="show">
-        <Wrapper
-          boxIndex={1}
-          value={valueStart}
-          setValue={setValueStart}
-          activeWrapper={activeWrapper}
-          setActiveWrapper={() => setActiveWrapper(1)}
-        />
-        {
-          response.map((array, indexArray) =>(
-            <Wrapper
-            key={indexArray}
-            boxIndex={0}
-            value={array}
-            setValue={()=>{}}
-            activeWrapper={-1}
-            setActiveWrapper={() => {}}
-            type="text"
+        <div className="box1">
+          <Wrapper
+            boxIndex={1}
+            value={valueStart}
+            setValue={setValueStart}
+            activeWrapper={activeWrapper}
+            setActiveWrapper={() => setActiveWrapper(1)}
           />
-          ))
-        }
-        <Wrapper
-          boxIndex={2}
-          value={valueEnd}
-          setValue={setValueEnd}
-          activeWrapper={activeWrapper}
-          setActiveWrapper={() => setActiveWrapper(2)}
-        />
-      </div>
-      <div className="foot">
-        <button className="btn" onClick={handleSubmit}>
-          Submit
-        </button>
-        <button className="btn" onClick={handleReset}>
-          Reset
-        </button>
+          {
+            response.map((array, indexArray) => (
+              <Wrapper
+                key={indexArray}
+                boxIndex={0}
+                value={array}
+                setValue={() => { }}
+                activeWrapper={-1}
+                setActiveWrapper={() => { }}
+                type="text"
+              />
+            ))
+          }
+          <div className="wrapper">
+            <button className="btn" onClick={handleSubmit}>
+              Submit
+            </button>
+          </div>
+        </div>
+        <div className="box2">
+
+          <Wrapper
+            boxIndex={2}
+            value={valueEnd}
+            setValue={setValueEnd}
+            activeWrapper={activeWrapper}
+            setActiveWrapper={() => setActiveWrapper(2)}
+          />
+          <div className="wrapper">
+            <button className="btn" onClick={handleReset}>
+              Reset
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
